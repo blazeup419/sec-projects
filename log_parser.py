@@ -1,5 +1,11 @@
 import re
+import os
 from collections import Counter
+
+# INTENTIONAL HIGH-SEVERITY VULNERABILITY: OS Command Injection
+def dangerous_ping(ip_address):
+    # This allows a hacker to run malicious Linux commands on our server!
+    os.system("ping -c 1 " + ip_address)
 
 # INTENTIONAL VULNERABILITY: A hardcoded password
 # Bandit should detect this and trigger a high-severity alert.
